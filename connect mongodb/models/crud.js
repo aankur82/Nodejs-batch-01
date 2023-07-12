@@ -1,17 +1,21 @@
-const dbclient=require('../index')
+const getDb=require('../index')
+
+const db=getDb();
+console.log(db)
+
+// const Insert= async (data)=>{
+//     console.log(db)
+//     // db.collection('detail').insertOne(data)
+//     // .then((res)=>{
+//     //     console.log(res)
+//     // })
+//     // .catch(err=>console.log(err))
+// }
+
+// Insert({name:'pankaj'})
 
 
 
-const Insert= async (data)=>{
-    await dbclient.collection('detail').insertOne(data)
-    .then((res)=>{})
-    .catch(err=>console.log(err))
-}
-
-Insert({name:'abhishek'})
 
 
-
-
-
-exports.insert=Insert;
+// exports.insert=Insert;
