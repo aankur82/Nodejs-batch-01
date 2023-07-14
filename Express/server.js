@@ -1,9 +1,14 @@
 const express = require('express')
 const adminRoute=require('./routes/admin')
-// import route from "./routes/admin.js";
+
 const userRoute=require('./routes/user')
+const path=require('path')
+const bodyParser=require('body-parser')
 
 const app = express()
+
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(express.static(path.join(__dirname,"public")))
 app.use('/admin',adminRoute)
 app.use(userRoute)
 app.use((req,res,next)=>{
