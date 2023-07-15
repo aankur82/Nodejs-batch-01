@@ -11,6 +11,7 @@ route.post('/add-item',adminController.additemdb)
 route.get('/delete',(req,res,next)=>{
     res.sendFile(path.join(__dirname,'..','views','add.html'))
 })
+route.get('/singleitem',adminController.singleitem)
 
 // route.get('/add-item',(req,res,next)=>{
 //     res.send("<form action='/admin/add-item' method='post'><input type='text'/><input type='submit'></form>")

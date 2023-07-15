@@ -1,0 +1,19 @@
+<%- include('header') %>
+    <title>Document</title>
+</head>
+<body>
+    <h1><%= name %></h1>
+    <% for(let i of arr){ %>
+        <%= i %>
+        <br>
+
+    <% } %>
+    <div>
+        <% if(b){ %>
+            <p>this is true</p>
+       <% }else { %>
+        <p>this is wrong</p>
+        <% } %>
+    </div>
+</body>
+</html>
