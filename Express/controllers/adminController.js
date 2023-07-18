@@ -1,6 +1,7 @@
 
 const path = require('path');
 const connection = require('../utilities/database')
+const objectId=require('mongodb').ObjectId
 
 exports.additemform = (req, res, next) => {
 
@@ -16,22 +17,24 @@ exports.additemdb = (req, res, next) => {
     res.redirect('/admin/add-item')
 
 }
-exports.singleitem = (req, res, next) => {
+exports.showAll = (req, res, next) => {
     let item;
     connection((db) => {
-        db.collection('products').findOne()
-            .then((result) => {
-                item = result;// console.log(item)
-                let a=[34,23,45,67]
-                let b=true
-                res.render('singleitem.ejs',{
-                    name:item.name,
-                    arr:a,
-                    b
-                })
-            }
-            )
-            .catch(err => console.log(err))
+        db.collection('products').find({}).toArray()
+        .then((data)=>{
+            res.render('showAll.ejs',{data})
+        }).catch((err)=>{
+            console.log(err)
+        })      
+})
+}
+exports.delete = (req, res, next) => {
+    let id = req.params.id
+    // console.log(id)
+
+    connection((db) => {
+        db.collection('products').deleteOne({_id:new objectId(id)})
     })
+    res.redirect('/admin/showall')
 
 }

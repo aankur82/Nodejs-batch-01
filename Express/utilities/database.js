@@ -8,6 +8,7 @@ const connection=(cb)=>{
     .then((client)=>{
         
         cb(client.db('shop'))
+        
     })
     .catch((err)=>console.log(err))
 }

@@ -8,10 +8,8 @@ const adminController=require('../controllers/adminController')
 route.get('/add-item',adminController.additemform);
 
 route.post('/add-item',adminController.additemdb)
-route.get('/delete',(req,res,next)=>{
-    res.sendFile(path.join(__dirname,'..','views','add.html'))
-})
-route.get('/singleitem',adminController.singleitem)
+route.get('/del/:id',adminController.delete)
+route.get('/showall',adminController.showAll)
 
 // route.get('/add-item',(req,res,next)=>{
 //     res.send("<form action='/admin/add-item' method='post'><input type='text'/><input type='submit'></form>")
