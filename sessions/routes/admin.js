@@ -3,8 +3,8 @@ var router = express.Router();
 var adminController=require('../controllers/adminController')
 /* GET home page. */
 router.get('/add', function(req, res, next) {
-  res.cookie("name","pawan")
-  .render('admin/add-product.ejs');
+  // res.cookie("name","pawan")
+  res.render('admin/add-product.ejs');
 });
 
 router.post('/add',adminController.add);
