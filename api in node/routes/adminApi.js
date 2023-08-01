@@ -4,7 +4,8 @@ var adminController=require('../controllers/adminController')
 /* GET home page. */
 
 router.post('/add',adminController.add);
-router.get('/products',adminController.show);
+router.get('/weather',adminController.show);
+
 
 
 module.exports = router;

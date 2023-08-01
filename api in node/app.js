@@ -2,7 +2,8 @@
 var express = require('express');
 
 const connect=require('./utilities/mongoose');
-const bodyParser=require('body-parser')
+const bodyParser=require('body-parser');
+const cors=require('cors')
 
 var adminRouter = require('./routes/adminApi');
 var usersRouter = require('./routes/users');
@@ -14,8 +15,13 @@ connect();
 
 // app.use(express.json());
 app.use(bodyParser.json())
+app.use(cors())
 // app.use(express.urlencoded({ extended: false }));
-
+// app.use((req,res,next)=>{
+//   res.setHeader('access-control-allow-origin','*');
+//   res.setHeader('access-control-allow-headers','Content-Type:application/JSON'); 
+//   next()
+// })
 app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
 
