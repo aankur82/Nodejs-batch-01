@@ -5,6 +5,15 @@ var adminController=require('../controllers/adminController')
 
 router.post('/add',adminController.add);
 router.get('/weather',adminController.show);
+router.post('/login',adminController.login)
+router.get('/home',adminController.home)
+router.post('/home',(req,res,next)=>{
+    const token= req.query
+    console.log(token)
+    res.json("hello")
+})
+
+
 
 
 
