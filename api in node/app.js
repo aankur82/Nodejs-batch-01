@@ -8,10 +8,11 @@ const cors = require('cors')
 var adminRouter = require('./routes/adminApi');
 var usersRouter = require('./routes/users');
 
+const httpserver=require('./bin/www');
+
 var app = express();
 connect();
 // view engine setup
-
 
 // app.use(express.json());
 app.use(bodyParser.json())
