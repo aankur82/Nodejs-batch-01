@@ -9,11 +9,18 @@ function App() {
   const [count, setCount] = useState(0)
  useEffect(() => {
   const socket=io('http://localhost:3000/')
+  socket.on('connect',()=>
+  {
+    console.log('server connected');
+  })
   socket.on('hello',(data)=>
   {
     console.log(data)
   })
- }, [])
+  socket.on('xyz',(data)=>{
+    console.log(data)
+  })
+ })
   return (
     <>
       <Axio/>

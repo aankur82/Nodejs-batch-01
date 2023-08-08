@@ -26,16 +26,11 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-  const webserver=require('socket.io');
-  
-  const io=webserver(server,
-    {
-      cors: {
-        origin: '*',
-        methods: ["GET", "POST"],
-        allowedHeaders: ["application/json"],
-      }
-    })
+const {socketConnect}=require('../utilities/socket')
+  socketConnect(server);
+const {getio}=require('../utilities/socket')
+const io=getio()
+
   io.on('connection',(socket)=>{
     console.log('client connected')
   })
@@ -118,4 +113,3 @@ function onListening() {
 // }
 // connectdb();
 
-module.exports=server

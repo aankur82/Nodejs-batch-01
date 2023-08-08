@@ -59,7 +59,7 @@ exports.home = (req, res, next) =>
     //   );
 
     // }
-    console.log(decode)
+    // console.log(decode)
 
   }
 
@@ -131,6 +131,12 @@ exports.home = (req, res, next) =>
     res.status(200).json(data);
   }
 
-
+exports.getdata=(req,res,next)=>{
+  const {getio}=require('../utilities/socket')
+  const io=getio()
+  const data=req.query.data
+  io.emit('xyz',{data:data})
+  console.log(data)
+}
 
 

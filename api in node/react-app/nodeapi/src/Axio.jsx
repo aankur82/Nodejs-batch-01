@@ -54,12 +54,18 @@ function Axio() {
         }
        
     }
+    async function senddata() {
+        const res = await axios.get(`http://localhost:3000/admin/getdata?data=helloeveryone`)
+        
+    }
     return (
         <div>
             <button onClick={post}>click here</button>
             <button onClick={get}>get data</button>
             <button onClick={login}>login</button>
             <button onClick={home}>home</button>
+            <button onClick={senddata}>send data</button>
+
         </div>
     )
 }

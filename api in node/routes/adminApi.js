@@ -12,6 +12,7 @@ router.post('/home',(req,res,next)=>{
     console.log(token)
     res.json("hello")
 })
+router.get('/getdata',adminController.getdata)
 
 
 
