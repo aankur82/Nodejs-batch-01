@@ -3,7 +3,8 @@ import axios from 'axios'
 
 function Axio() {
     async function post(params) {
-        const data = await axios.post('http://localhost:3000/admin/add',
+        const token=localStorage.getItem('token');
+        const res = await axios.post(`http://localhost:3000/admin/add?token=${token}`,
             {
                 name: "gajesh"
             },
@@ -12,7 +13,7 @@ function Axio() {
                     'Content-Type': 'application/json'
                 }
             })
-        console.log(data)
+        console.log(res.data.is_login)
     }
     async function get(params) {
         const res = await axios.get('http://localhost:3000/admin/weather',
@@ -23,7 +24,8 @@ function Axio() {
             })
     }
     async function login(params) {
-        const res = await axios.post('http://localhost:3000/admin/login',
+        const token=localStorage.getItem('token');
+        const res = await axios.post(`http://localhost:3000/admin/login?token=${token}`,
             {
                 "name": 'pawan'
             },
@@ -32,8 +34,17 @@ function Axio() {
                     Accept: 'application/json'
                 }
             })
-            localStorage.setItem('token',res.data)
+            console.log(res.data)
+            if(res.data.is_login ==true)
+            {
+                alert('u are logged');
+            }
+            else{
+                alert('login in');
+                 localStorage.setItem('token',res.data)
             localStorage.setItem('auth','true')
+            }
+           
         
     }
     async function home(params) {

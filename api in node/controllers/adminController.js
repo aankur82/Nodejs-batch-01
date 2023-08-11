@@ -2,13 +2,21 @@ const Product = require('../models/shopModel')
 const jwt = require('jsonwebtoken')
 const data = 'pawan'
 const secret_key = "jfdkjdkfjdksjfkdj"
+
+
+
 exports.login = (req, res, next) => {
   let name = req.body.name
+  let token=req.query.token
+  if(token==null ||token== undefined)
+  {
+    res.json({is_login:false})
+  }
   if (name == data) {
     const token = jwt.sign({ name: name }, secret_key, {
       expiresIn: '2d'
     })
-    res.status(200).json(token)
+    res.status(200).json({token,is_login:true})
   }
   res.status(200).json({
     massege: "data received",
@@ -16,6 +24,8 @@ exports.login = (req, res, next) => {
       name: name
     }
   })
+
+  
 }
 
 exports.home = (req, res, next) => 
